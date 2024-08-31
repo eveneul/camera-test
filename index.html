@@ -28,7 +28,7 @@
         0.1,
         1000
       );
-      const renderer = new THREE.WebGLRenderer();
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
@@ -63,11 +63,11 @@
       // Load model
       const loader = new THREE.GLTFLoader();
       let model;
-      loader.load("./lens.gltf", (gltf) => {
+      loader.load("./camera.gltf", (gltf) => {
         model = gltf.scene;
         model.traverse((child) => {
           if (child.isMesh) {
-            child.material.metalness = 0.9;
+            child.material.metalness = 0.98;
             child.material.roughness = 0.76;
 
             const materialFolder = gui.addFolder(`Material: ${child.name}`);
